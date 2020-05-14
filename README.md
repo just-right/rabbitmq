@@ -1,8 +1,8 @@
 # 一、Spring Boot整合RabbitMQ介绍
 
-&emsp;&emsp;Spring Boot整合RabbitMQ，具体实现思路和细节参考:
+&emsp;&emsp;Spring Boot整合RabbitMQ，具体实现思路和细节请参考:
 
->- [Spring Boot整合RabbitMQ](https://www.jianshu.com/p/8db16f5fe3c7)
+> [Spring Boot整合RabbitMQ](https://www.jianshu.com/p/8db16f5fe3c7)
 
 - RabbitMQ简易使用
 - 实现消息确认机制(ACK)
