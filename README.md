@@ -11,7 +11,7 @@
 
 # 二、前期准备
 
-## 2.1 MySQL数据库准备:
+## 2.1 MySQL数据库准备(示例代码中未使用):
 
 - 对应的SQL见 /src/main/resources/sql/CreateTableSQL.sql
 - 创建数据库TestDataBase
