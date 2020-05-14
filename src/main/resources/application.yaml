@@ -1,0 +1,55 @@
+server:
+  port: 8081
+  address: 127.0.0.1
+
+spring:
+#  redis:
+#    host: 121.199.74.176
+#    port: 6379
+#    password: 123456
+#    timeout: 10000
+#    jedis:
+#      pool:
+#        max-active: 10
+#        max-idle: 10
+#        min-idle: 0
+#        max-wait: 10000
+
+
+  rabbitmq:
+    host: 121.199.74.176
+    port: 5672
+    username: user
+    password: password
+    virtual-host: /
+    publisher-returns: true #失败返回
+    publisher-confirms: true #发送确认
+    listener:
+      simple:
+        acknowledge-mode: manual #手动应答
+#        concurrency: 1  #最小消费者数量
+#        max-concurrency: 10 #最大消费者数量
+        retry:
+          enabled: true #重试
+          max-attempts: 3 #消费端-重发次数
+#          initial-interval: 2000 #重试间隔时间
+#        default-requeue-rejected: true #重试次数超过上面的设置之后是否丢弃
+      direct:
+        acknowledge-mode: manual
+
+    template: #生产端重试机制
+      retry:
+        enabled: true
+        max-attempts: 3
+#        initial-interval: 2000
+     # mandatory: true # 参数设为 true 时，交换器无法根据自身的类型和路由键找到一个符合条件的队列，
+                      # 那么 RabbitMQ 会调用 Basic.Return 命令将消息返回给生产者
+    cache:
+      connection:
+        mode: channel
+
+  datasource:
+    url: jdbc:mysql://121.199.74.176:3306/TestDataBase?serverTimezone=GMT%2B8&useUnicode=true&allowMultiQueries=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
